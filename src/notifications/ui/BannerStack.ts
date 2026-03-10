@@ -1,5 +1,8 @@
 import "../../styles/notifications.css";
-import type { Notification } from "../model.js";
+import type {
+  Notification,
+  NotificationController,
+} from "../model.js";
 
 const stack: Notification[] = [];
 
@@ -15,6 +18,11 @@ export const bannerStackModel: BannerStackModel = {
   },
 };
 
-export function BannerStack(): null {
+export interface BannerStackProps {
+  controller: NotificationController;
+}
+
+export function BannerStack({ controller }: BannerStackProps): null {
+  void controller;
   return null;
 }

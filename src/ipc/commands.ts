@@ -48,10 +48,23 @@ export function listIpcCommands(): readonly IpcCommandDefinition[] {
   return ipcCommandDefinitions;
 }
 
+const launcherToggleDefinition = ipcCommandDefinitions.find(
+  (definition) => definition.command.type === "launcher.toggle"
+);
+
 export function recommendedNiriBinding(): string {
+  if (!launcherToggleDefinition) {
+    throw new Error("Missing launcher toggle IPC definition");
+  }
+
+  const spawnTokens = launcherToggleDefinition.tokens
+    .map((token) => `"${token}"`)
+    .join(" ");
+
   return [
     `Mod+Space hotkey-overlay-title="App Launcher" {`,
-    `    spawn "amber-shell" "ipc" "call" "launcher" "toggle";`,
+    `    # call launcher toggle`,
+    `    spawn "amber-shell" "ipc" ${spawnTokens};`,
     `}`,
   ].join("\n");
 }

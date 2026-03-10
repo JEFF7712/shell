@@ -16,6 +16,7 @@ the wiring in sync:
 
 ```niri
 Mod+Space hotkey-overlay-title="App Launcher" {
+    # call launcher toggle
     spawn "amber-shell" "ipc" "call" "launcher" "toggle";
 }
 
@@ -23,3 +24,7 @@ Mod+Shift+N hotkey-overlay-title="Notifications" {
     spawn "amber-shell" "ipc" "call" "notifications" "dismiss-all";
 }
 ```
+
+For a curated binding snippet that stays synchronized with the CLI, see
+[docs/setup/niri-integration.md](docs/setup/niri-integration.md) or import
+`recommendedNiriBinding()` from `src/ipc/commands.js`.

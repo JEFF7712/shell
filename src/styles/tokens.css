@@ -1,0 +1,16 @@
+:root {
+  --font-mono-stack: "JetBrains Mono", "Space Mono", "IBM Plex Mono", monospace;
+  --amber-accent: #f7c74c;
+  --amber-accent-soft: rgba(247, 199, 76, 0.3);
+  --surface-deep: #04050c;
+  --surface-shadow: #090b14;
+  --surface-panel: rgba(13, 15, 24, 0.95);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --border-muted: rgba(255, 255, 255, 0.08);
+  --text-primary: #f4f6ff;
+  --text-muted: rgba(244, 246, 255, 0.65);
+  --overlay-radius: 3px;
+  --transition-fast: 0.16s ease;
+  --transition-slide: 0.18s ease-out;
+  --shadow-deep: 0 18px 45px rgba(3, 4, 12, 0.7);
+}

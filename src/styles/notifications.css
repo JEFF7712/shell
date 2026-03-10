@@ -1,17 +1,12 @@
-:root {
-  --notification-dot-color: #ef4444;
-  --notification-dot-glow: #fca5a5;
-  --notification-hover-bg: rgba(15, 23, 42, 0.9);
-  --notification-hover-color: #f9fafb;
-}
+@import "./tokens.css";
 
 .notification-indicator {
   position: relative;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--notification-dot-color);
-  box-shadow: 0 0 8px var(--notification-dot-glow);
+  background: var(--amber-accent);
+  box-shadow: 0 0 10px rgba(247, 199, 76, 0.6);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -27,8 +22,8 @@
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  animation: pulse 1.6s ease-in-out infinite;
+  border: 1px solid var(--border-muted);
+  animation: pulse 1.4s ease-in-out infinite;
 }
 
 .notification-indicator[data-unread-count]:hover::after {
@@ -38,17 +33,18 @@
   right: 50%;
   transform: translateX(50%);
   padding: 4px 8px;
-  border-radius: 999px;
-  background: var(--notification-hover-bg);
-  color: var(--notification-hover-color);
+  border-radius: var(--overlay-radius);
+  background: var(--surface-panel);
+  color: var(--text-primary);
   font-size: 0.65rem;
   letter-spacing: 0.05em;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
 @keyframes pulse {
   0% {
     transform: scale(0.85);
-    opacity: 0.4;
+    opacity: 0.6;
   }
   100% {
     transform: scale(1.3);

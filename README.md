@@ -28,3 +28,10 @@ Mod+Shift+N hotkey-overlay-title="Notifications" {
 For a curated binding snippet that stays synchronized with the CLI, see
 [docs/setup/niri-integration.md](docs/setup/niri-integration.md) or import
 `recommendedNiriBinding()` from `src/ipc/commands.js`.
+
+## Verification
+
+- `scripts/verify.sh` is the final gate: it runs `pnpm typecheck`, the
+  full Vitest suite, and `pnpm lint` when a lint script is configured.
+- `tests/verification.test.ts` keeps the verification logic executable via
+  `verifyCommands()` so tooling can assert the required checks are present.

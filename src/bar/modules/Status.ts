@@ -1,3 +1,5 @@
+import type { StatusActionKey } from "../../system/openers.js";
+
 export type StatusState = "ok" | "muted" | "alert";
 
 export interface StatusItem {
@@ -6,6 +8,7 @@ export interface StatusItem {
   icon: string;
   state: StatusState;
   tooltip: string;
+  actionKey: StatusActionKey;
 }
 
 export interface StatusModuleModel {
@@ -19,28 +22,32 @@ const STATUS_ITEMS: StatusItem[] = [
     label: "Wi-Fi",
     icon: "wifi",
     state: "ok",
-    tooltip: "Network connected"
+    tooltip: "Network connected",
+    actionKey: "wifi"
   },
   {
     id: "status-battery",
     label: "Battery",
     icon: "battery",
     state: "ok",
-    tooltip: "Battery healthy"
+    tooltip: "Battery healthy",
+    actionKey: "battery"
   },
   {
     id: "status-audio",
     label: "Audio",
     icon: "volume",
     state: "muted",
-    tooltip: "Audio muted"
+    tooltip: "Audio muted",
+    actionKey: "audio"
   },
   {
     id: "status-notifications",
     label: "Alerts",
     icon: "bell",
     state: "alert",
-    tooltip: "2 unread"
+    tooltip: "2 unread",
+    actionKey: "notifications"
   }
 ];
 

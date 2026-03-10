@@ -11,7 +11,7 @@ The shell includes a helper, `recommendedNiriBinding()` in
 ```
 Mod+Space hotkey-overlay-title="App Launcher" {
     # call launcher toggle
-    spawn "amber-shell" "ipc" "call" "launcher" "toggle";
+    spawn "/home/rupan/projects/shell/bin/amber-shell" "ipc" "call" "launcher" "toggle";
 }
 ```
 

@@ -15,10 +15,15 @@ function hasLintScript(): boolean {
   return typeof candidate === "string" && candidate.trim().length > 0;
 }
 
-export function verifyCommands() {
-  const commands = ["pnpm typecheck", "pnpm vitest"];
+type PackageManager = "pnpm" | "npm";
+
+export function verifyCommands(pm: PackageManager = "pnpm") {
+  const commands =
+    pm === "pnpm"
+      ? ["pnpm typecheck", "pnpm vitest"]
+      : ["npm run typecheck", "npm test"];
   if (hasLintScript()) {
-    commands.push("pnpm lint");
+    commands.push(pm === "pnpm" ? "pnpm lint" : "npm run lint");
   }
   return commands;
 }

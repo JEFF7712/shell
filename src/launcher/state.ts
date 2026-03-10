@@ -35,3 +35,31 @@ export function getLastUsedAt(
 ): number | undefined {
   return state.lastUsedAtById[app.id];
 }
+
+export interface LauncherController {
+  readonly isVisible: boolean;
+  show(): void;
+  hide(): void;
+  toggle(): void;
+}
+
+export function createLauncherController(
+  initialVisibility = false
+): LauncherController {
+  let visible = initialVisibility;
+
+  return {
+    get isVisible() {
+      return visible;
+    },
+    show() {
+      visible = true;
+    },
+    hide() {
+      visible = false;
+    },
+    toggle() {
+      visible = !visible;
+    }
+  };
+}

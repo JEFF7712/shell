@@ -1,0 +1,111 @@
+:root {
+  --launcher-accent: #b08aff;
+  --launcher-muted: rgba(255, 255, 255, 0.18);
+  --launcher-border: rgba(255, 255, 255, 0.25);
+  --launcher-window-bg: radial-gradient(circle at 20% 0%, rgba(128, 233, 255, 0.25), transparent 55%),
+    linear-gradient(180deg, rgba(25, 15, 95, 0.9), rgba(17, 8, 40, 0.98));
+}
+
+.launcher-backdrop {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 40% 0%, rgba(255, 255, 255, 0.08), transparent 45%),
+    rgba(5, 5, 20, 0.95);
+  display: grid;
+  place-items: center;
+  padding: 2.5rem;
+  z-index: 1000;
+  backdrop-filter: blur(14px);
+}
+
+.launcher-window {
+  width: min(420px, 90vw);
+  max-height: 80vh;
+  background: var(--launcher-window-bg);
+  border-radius: 32px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 25px 60px rgba(9, 5, 30, 0.75);
+  border: 1px solid var(--launcher-border);
+  color: #f4f5ff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-family: "Space Grotesk", "Manrope", "Segoe UI Variable", "Helvetica Neue", sans-serif;
+  animation: launcherFloat 0.45s ease-out both;
+}
+
+.launcher-runtime {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.launcher-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.launcher-list-item {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.launcher-list-item:focus-visible,
+.launcher-list-item:hover {
+  border-color: var(--launcher-accent);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.launcher-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.9), var(--launcher-accent));
+  color: #1c0d48;
+  letter-spacing: 0.05rem;
+}
+
+.launcher-app-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fdfdfd;
+  letter-spacing: 0.02rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes launcherFloat {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .launcher-window {
+    animation: none;
+    transition: none;
+  }
+}
